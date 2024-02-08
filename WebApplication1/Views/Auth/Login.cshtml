@@ -1,0 +1,33 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<link href="~/Content/Style.css" rel="stylesheet" />
+
+<div class="login-container">
+    <h2 class="login-title">Welcome!</h2>
+
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "login-form" }))
+    {
+
+        @Html.ValidationSummary(true)
+        
+        <div class="form-group text-center">
+            @Html.LabelFor(m => m.Username, new { @class = "label" })
+            @Html.TextBoxFor(m => m.Username, new { @class = "input" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+
+        <div class="form-group text-center">
+            @Html.LabelFor(m => m.Password, new { @class = "label" })
+            @Html.PasswordFor(m => m.Password, new { @class = "input" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="text-center">
+            <button type="submit" class="login-button">Login</button>
+
+        </div>
+    }
+</div>

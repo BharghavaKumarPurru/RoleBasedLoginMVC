@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Normal User View";
+}
+
+<h2>Welcome to the Normal User View!</h2>
+
+<p>This view is accessible only to users with the 'NormalUser' role.</p>
+
+<div>
+    <!-- Normal user-specific content goes here -->
+
+    @Html.ActionLink("Logout", "Logout", "Auth")
+</div>

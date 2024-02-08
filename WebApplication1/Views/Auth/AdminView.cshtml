@@ -1,0 +1,48 @@
+﻿@model List<WebApplication1.Models.User>
+
+@{
+    ViewBag.Title = "Admin View";
+}
+
+<h2>Welcome to the Admin View!</h2>
+
+<p>This view is accessible only to users with the 'Admin' role.</p>
+
+<div>
+    <h3>Non-Admin Users:</h3>
+
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var user in ViewBag.NonAdminUsers)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>
+                    @Html.ActionLink("Make Admin", "MakeAdmin", new { id = user.Id }, new { @class = "btn btn-success btn-sm" })
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = user.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h3>Admin Users:</h3>
+
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <!-- Add additional columns as needed for admin details -->
+        </tr>
+        @foreach (var adminUser in ViewBag.AdminUsers)
+        {
+            <tr>
+                <td>@adminUser.Username</td>
+                <!-- Add additional columns as needed for admin details -->
+            </tr>
+        }
+    </table>
+
+    @Html.ActionLink("Logout", "Logout", "Auth")
+</div>
